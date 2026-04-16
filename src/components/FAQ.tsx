@@ -30,7 +30,7 @@ export function FAQ() {
                     className="w-full flex items-start justify-between gap-8 py-6 md:py-8 text-left group"
                   >
                     <div className="flex items-baseline gap-6 md:gap-8">
-                      <span className="font-display text-muted text-sm md:text-base tabular-nums">
+                      <span className="font-display text-accent text-sm md:text-base tabular-nums">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span className="font-display text-lg md:text-2xl font-medium leading-snug">

@@ -10,9 +10,14 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-xs uppercase tracking-[0.2em] text-muted mb-8"
+          className="flex items-center gap-3 text-xs uppercase tracking-[0.2em] text-muted mb-8"
         >
-          {hero.eyebrow}
+          <span className="inline-block w-1.5 h-1.5 bg-accent flex-shrink-0" />
+          <span>
+            <span className="text-accent/50 mr-1">[</span>
+            {hero.eyebrow}
+            <span className="text-accent/50 ml-1">]</span>
+          </span>
         </motion.div>
 
         <motion.h1

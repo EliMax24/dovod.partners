@@ -19,7 +19,7 @@ export function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <Reveal>
             <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-muted mb-6">
+              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-6">
                 Контакты
               </div>
               <h2 className="font-display font-medium text-display-lg mb-10 max-w-xl">
@@ -35,7 +35,7 @@ export function Contact() {
 
               {!hasAny && (
                 <p className="mt-8 text-sm text-muted max-w-md leading-relaxed">
-                  Контакты будут опубликованы позднее. Пока оставьте сообщение через форму справа — партнёр ответит напрямую.
+                  Можно связаться любым удобным способом — или заполнить форму справа, мы ответим напрямую.
                 </p>
               )}
             </div>
@@ -43,12 +43,10 @@ export function Contact() {
 
           <Reveal delay={0.1}>
             <form onSubmit={onSubmit} className="bg-paper border border-line p-8 md:p-10">
-              <h3 className="font-display text-xl md:text-2xl font-medium mb-2">
-                {formCopy.title}
-              </h3>
-              <p className="text-muted text-sm leading-relaxed mb-8">
-                {formCopy.description}
-              </p>
+              <div className="mb-8">
+                <div className="text-xs uppercase tracking-[0.2em] text-accent mb-3">Первичная диагностика</div>
+                <p className="font-display font-medium text-2xl md:text-3xl leading-snug tracking-tightish">Заполните форму</p>
+              </div>
 
               <div className="space-y-7">
                 <label className="block">

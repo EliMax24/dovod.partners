@@ -7,7 +7,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr] gap-12 mb-20">
           <div>
             <div className="font-display text-3xl md:text-5xl font-medium tracking-tightish max-w-lg leading-tight">
-              PRO<span className="text-paper/40">·</span>Позиция
+              PRO<span className="text-accent-soft">·</span>Позиция
             </div>
             <p className="mt-6 text-paper/60 max-w-md leading-relaxed">
               Международная юридическая практика для tech и&nbsp;digital. Трансграничные сделки,

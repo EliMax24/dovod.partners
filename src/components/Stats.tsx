@@ -10,7 +10,7 @@ export function Stats() {
             <h2 className="font-display font-medium text-display-md max-w-3xl">
               О&nbsp;практике
             </h2>
-            <div className="hidden md:block text-sm text-muted">01 / 05</div>
+            <div className="hidden md:block text-sm text-accent/60">01 / 05</div>
           </div>
         </Reveal>
 
@@ -26,7 +26,7 @@ export function Stats() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-12">
           {manifest.map((m, i) => (
             <Reveal key={m.k} delay={i * 0.08}>
-              <div className="flex flex-col border-t border-ink pt-5">
+              <div className="flex flex-col border-t-2 border-accent pt-5">
                 <div className="text-xs uppercase tracking-[0.18em] text-muted mb-4">{m.k}</div>
                 <div className="font-display font-medium text-3xl md:text-4xl text-ink mb-4 leading-tight tracking-tightish">
                   {m.v}

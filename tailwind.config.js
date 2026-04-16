@@ -12,6 +12,8 @@ export default {
         "muted-2": "#9A9A9A",
         line: "#E5E5E3",
         "line-strong": "#D4D4D0",
+        accent: "#4F46E5",
+        "accent-soft": "#6366F1",
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

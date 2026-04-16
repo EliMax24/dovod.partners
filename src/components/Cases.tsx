@@ -8,9 +8,9 @@ export function Cases() {
         <Reveal>
           <div className="flex items-baseline justify-between gap-8 mb-16 md:mb-24">
             <h2 className="font-display font-medium text-display-md max-w-3xl">
-              Избранные кейсы
+              Недавние кейсы
             </h2>
-            <div className="hidden md:block text-sm text-muted">04 / 05</div>
+            <div className="hidden md:block text-sm text-accent/60">04 / 05</div>
           </div>
         </Reveal>
 
@@ -19,7 +19,7 @@ export function Cases() {
             <Reveal key={i} delay={(i % 2) * 0.1}>
               <article className="group border border-line-strong hover:border-ink transition-colors p-8 md:p-10 h-full flex flex-col">
                 <div className="text-xs uppercase tracking-[0.18em] text-muted mb-6">
-                  {String(i + 1).padStart(2, '0')} · {c.tag}
+                  <span className="text-accent">{String(i + 1).padStart(2, '0')}</span> · {c.tag}
                 </div>
                 <h3 className="font-display text-xl md:text-2xl font-medium leading-snug mb-5">
                   {c.title}

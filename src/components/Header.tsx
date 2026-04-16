@@ -23,7 +23,7 @@ export function Header() {
     >
       <div className="container-pp flex items-center justify-between h-16 md:h-20">
         <a href="#top" className="font-display font-semibold tracking-tightish text-lg md:text-xl">
-          PRO<span className="text-muted">·</span>Позиция
+          PRO<span className="text-accent">·</span>Позиция
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
