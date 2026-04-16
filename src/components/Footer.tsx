@@ -10,7 +10,7 @@ export function Footer() {
               PRO<span className="text-paper/40">·</span>Позиция
             </div>
             <p className="mt-6 text-paper/60 max-w-md leading-relaxed">
-              Международная юридическая практика для tech и&nbsp;TMT. Трансграничные сделки,
+              Международная юридическая практика для tech и&nbsp;digital. Трансграничные сделки,
               выход на&nbsp;внешние рынки, защита активов.
             </p>
           </div>
