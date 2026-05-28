@@ -1,128 +1,107 @@
-import { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from './Reveal';
-import { contacts, formCopy } from '../data/content';
+import { useContent } from '../data/useContent';
+import { useLang } from '../context/LangContext';
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
+  const { contacts } = useContent();
+  const { lang } = useLang();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSent(true);
-  };
-
-  const hasAny = contacts.email || contacts.telegram || contacts.linkedin || contacts.phone;
+  const items = [
+    {
+      label: 'E-mail',
+      value: contacts.email,
+      href: contacts.email ? `mailto:${contacts.email}` : undefined,
+    },
+    ...(lang === 'ru' ? [{
+      label: 'Телефон',
+      value: contacts.phone,
+      href: contacts.phone ? `tel:${contacts.phone.replace(/\D/g, '')}` : undefined,
+    }] : []),
+    {
+      label: 'Telegram',
+      value: contacts.telegram,
+      href: contacts.telegram
+        ? `https://t.me/${contacts.telegram.replace('@', '')}`
+        : undefined,
+    },
+  ];
 
   return (
-    <section id="contacts" className="section-pp bg-paper-warm border-y border-line">
-      <div className="container-pp">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-          <Reveal>
-            <div>
-              <div className="text-xs uppercase tracking-[0.2em] text-accent mb-6">
-                Контакты
-              </div>
-              <h2 className="font-display font-medium text-display-lg mb-10 max-w-xl">
-                Обсудим&nbsp;задачу
-              </h2>
-
-              <div className="space-y-6 pt-8 border-t border-ink">
-                <ContactRow label="E-mail" value={contacts.email} href={contacts.email ? `mailto:${contacts.email}` : undefined} />
-                <ContactRow label="Telegram" value={contacts.telegram} href={contacts.telegram ? `https://t.me/${contacts.telegram.replace('@', '')}` : undefined} />
-                <ContactRow label="LinkedIn" value={contacts.linkedin} href={contacts.linkedin || undefined} />
-                <ContactRow label="Телефон" value={contacts.phone} href={contacts.phone ? `tel:${contacts.phone.replace(/\D/g, '')}` : undefined} />
-              </div>
-
-              {!hasAny && (
-                <p className="mt-8 text-sm text-muted max-w-md leading-relaxed">
-                  Можно связаться любым удобным способом — или заполнить форму справа, мы ответим напрямую.
-                </p>
-              )}
+    <section
+      id="contacts"
+      className="scroll-mt-16 md:scroll-mt-20 bg-ink text-paper relative overflow-hidden"
+    >
+      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.07 }}>
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+              <path d="M 48 0 L 0 0 0 48" fill="none" stroke="white" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+      <div className="container-pp py-20 md:py-28">
+        <Reveal>
+          <div className="mb-14 md:mb-20">
+            <div className="text-xs uppercase tracking-[0.2em] text-paper/40 mb-5">
+              {lang === 'ru' ? 'Контакты' : 'Contact'}
             </div>
-          </Reveal>
+            <h2 className="font-display font-medium text-display-lg text-paper max-w-2xl leading-none">
+              {lang === 'ru' ? 'Обсудим задачу' : 'Discuss Your Matter'}
+            </h2>
+            {lang === 'en' && (
+              <p className="mt-6 text-paper/50 text-base leading-relaxed max-w-md">
+                We work with clients across MENA, EU, US and CIS. Reach out to discuss your matter — we typically respond within one working day.
+              </p>
+            )}
+          </div>
+        </Reveal>
 
-          <Reveal delay={0.1}>
-            <form onSubmit={onSubmit} className="bg-paper border border-line p-8 md:p-10">
-              <div className="mb-8">
-                <div className="text-xs uppercase tracking-[0.2em] text-accent mb-3">Первичная диагностика</div>
-                <p className="font-display font-medium text-2xl md:text-3xl leading-snug tracking-tightish">Заполните форму</p>
-              </div>
-
-              <div className="space-y-7">
-                <label className="block">
-                  <span className="text-xs uppercase tracking-[0.18em] text-muted">Имя</span>
-                  <input
-                    type="text"
-                    required
-                    className="w-full mt-2 pb-2 bg-transparent border-b border-line-strong focus:border-ink outline-none transition-colors"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="text-xs uppercase tracking-[0.18em] text-muted">
-                    Коротко о задаче
+        <div className="border-t border-paper/15">
+          {items.map((item, i) => (
+            <Reveal key={item.label} delay={i * 0.07}>
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className="group grid grid-cols-[120px_1fr_auto] md:grid-cols-[180px_1fr_auto] items-center gap-6 py-7 md:py-9 border-b border-paper/15 hover:bg-paper/5 -mx-4 px-4 transition-colors duration-200"
+                >
+                  <span className="text-xs uppercase tracking-[0.18em] text-paper/40 group-hover:text-paper/60 transition-colors duration-200">
+                    {item.label}
                   </span>
-                  <textarea
-                    rows={4}
-                    required
-                    placeholder="Отрасль, юрисдикции, суть вопроса, сроки"
-                    className="w-full mt-2 pb-2 bg-transparent border-b border-line-strong focus:border-ink outline-none transition-colors resize-none placeholder:text-muted-2"
-                  />
-                </label>
-
-                <label className="block">
-                  <span className="text-xs uppercase tracking-[0.18em] text-muted">
-                    Как связаться
+                  <span className="font-display text-lg md:text-xl lg:text-2xl font-medium tracking-tightish text-accent leading-tight">
+                    {item.value}
                   </span>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Email или Telegram"
-                    className="w-full mt-2 pb-2 bg-transparent border-b border-line-strong focus:border-ink outline-none transition-colors placeholder:text-muted-2"
+                  <ArrowUpRight
+                    size={20}
+                    className="text-paper/30 group-hover:text-accent transition-colors duration-200 flex-shrink-0"
                   />
-                </label>
-              </div>
-
-              <button
-                type="submit"
-                disabled={sent}
-                className="group mt-10 inline-flex items-center gap-3 px-7 py-4 bg-ink text-paper text-sm font-medium hover:bg-ink-soft transition-colors disabled:opacity-60"
-              >
-                {sent ? formCopy.sent : formCopy.submit}
-                {!sent && (
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                )}
-              </button>
-
-              <p className="mt-6 text-xs text-muted leading-relaxed">{formCopy.disclaimer}</p>
-            </form>
-          </Reveal>
+                </a>
+              ) : (
+                <div className="grid grid-cols-[120px_1fr_auto] md:grid-cols-[180px_1fr_auto] items-center gap-6 py-7 md:py-9 border-b border-paper/15">
+                  <span className="text-xs uppercase tracking-[0.18em] text-paper/40">
+                    {item.label}
+                  </span>
+                  <span className="font-display text-2xl md:text-3xl lg:text-4xl font-medium tracking-tightish text-paper/20 leading-tight">
+                    —
+                  </span>
+                  <ArrowUpRight size={20} className="opacity-0 flex-shrink-0" />
+                </div>
+              )}
+            </Reveal>
+          ))}
         </div>
+
+        <Reveal delay={0.3}>
+          <p className="mt-10 text-sm text-paper/50 leading-relaxed">
+            {lang === 'ru'
+              ? <>Содержание переговоров защищено <a href="/confidentiality" className="underline underline-offset-2 hover:text-accent transition-colors">политикой конфиденциальности</a> и <a href="/ethics" className="underline underline-offset-2 hover:text-accent transition-colors">кодексом деловой этики</a>.</>
+              : <>All communications are protected by our <a href="/confidentiality" className="underline underline-offset-2 hover:text-accent transition-colors">privacy policy</a> and <a href="/ethics" className="underline underline-offset-2 hover:text-accent transition-colors">code of ethics</a>.</>
+            }
+          </p>
+        </Reveal>
       </div>
     </section>
-  );
-}
-
-function ContactRow({
-  label,
-  value,
-  href,
-}: {
-  label: string;
-  value: string;
-  href?: string;
-}) {
-  const display = value || '—';
-  return (
-    <div>
-      <div className="text-xs uppercase tracking-[0.18em] text-muted mb-2">{label}</div>
-      {href ? (
-        <a href={href} className="font-display text-xl md:text-2xl font-medium link-reveal w-fit">
-          {display}
-        </a>
-      ) : (
-        <div className="font-display text-xl md:text-2xl font-medium text-muted-2">{display}</div>
-      )}
-    </div>
   );
 }

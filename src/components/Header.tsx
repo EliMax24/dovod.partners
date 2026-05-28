@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { nav } from '../data/content';
+import { Logo } from './Logo';
+import { useContent } from '../data/useContent';
+import { useLang } from '../context/LangContext';
 import clsx from 'clsx';
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { nav, hero } = useContent();
+  const { lang, toggle } = useLang();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -22,8 +26,8 @@ export function Header() {
       )}
     >
       <div className="container-pp flex items-center justify-between h-16 md:h-20">
-        <a href="#top" className="font-display font-semibold tracking-tightish text-lg md:text-xl">
-          PRO<span className="text-accent">·</span>Позиция
+        <a href="#top">
+          <Logo width={180} />
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -31,7 +35,7 @@ export function Header() {
             <a
               key={item.href}
               href={item.href}
-              className="link-reveal text-sm text-ink/80 hover:text-ink transition-colors"
+              className="link-reveal text-sm text-ink/80 hover:text-accent transition-colors"
             >
               {item.label}
             </a>
@@ -39,21 +43,25 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
+          <LangToggle lang={lang} toggle={toggle} />
           <a
             href="#contacts"
-            className="text-sm font-medium px-5 py-2.5 bg-ink text-paper hover:bg-ink-soft transition-colors"
+            className="text-sm font-medium px-5 py-2.5 bg-ink text-paper hover:bg-accent transition-colors"
           >
-            Обсудить задачу
+            {hero.cta}
           </a>
         </div>
 
-        <button
-          className="lg:hidden p-2 -mr-2"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Меню"
-        >
+        <div className="lg:hidden flex items-center gap-3">
+          <LangToggle lang={lang} toggle={toggle} />
+          <button
+            className="p-2 -mr-2"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Меню"
+          >
           {open ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -74,11 +82,33 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-4 inline-flex justify-center bg-ink text-paper py-3 text-sm font-medium"
             >
-              Обсудить задачу
+              {hero.cta}
             </a>
           </div>
         </div>
       )}
     </header>
+  );
+}
+
+function LangToggle({ lang, toggle }: { lang: 'ru' | 'en'; toggle: () => void }) {
+  return (
+    <button
+      onClick={toggle}
+      className="flex items-center border border-line-strong hover:border-accent transition-colors duration-200 overflow-hidden"
+    >
+      <span className={clsx(
+        'px-3 py-1.5 text-xs font-medium tracking-widest transition-colors duration-200',
+        lang === 'ru' ? 'bg-ink text-paper' : 'text-ink/40 hover:text-ink',
+      )}>
+        RU
+      </span>
+      <span className={clsx(
+        'px-3 py-1.5 text-xs font-medium tracking-widest transition-colors duration-200',
+        lang === 'en' ? 'bg-ink text-paper' : 'text-ink/40 hover:text-ink',
+      )}>
+        EN
+      </span>
+    </button>
   );
 }

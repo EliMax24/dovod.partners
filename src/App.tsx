@@ -8,8 +8,17 @@ import { Team } from './components/Team';
 import { FAQ } from './components/FAQ';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { ConfidentialityPage, TermsPage } from './components/PolicyPage';
+import { EthicsPage } from './components/EthicsPage';
+import { LangProvider } from './context/LangContext';
 
-function App() {
+const path = window.location.pathname;
+
+function Main() {
+  if (path === '/confidentiality') return <ConfidentialityPage />;
+  if (path === '/term-of-use') return <TermsPage />;
+  if (path === '/ethics') return <EthicsPage />;
+
   return (
     <>
       <Header />
@@ -25,6 +34,14 @@ function App() {
       </main>
       <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <LangProvider>
+      <Main />
+    </LangProvider>
   );
 }
 

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { faq } from '../data/content';
+import { useContent } from '../data/useContent';
+import { useLang } from '../context/LangContext';
 import { Reveal } from './Reveal';
 import clsx from 'clsx';
 
 export function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
+  const [open, setOpen] = useState<number | null>(null);
+  const { faq } = useContent();
+  const { lang } = useLang();
 
   return (
     <section id="faq" className="section-pp">
@@ -14,7 +17,7 @@ export function FAQ() {
         <Reveal>
           <div className="flex items-baseline justify-between gap-8 mb-16 md:mb-24">
             <h2 className="font-display font-medium text-display-md max-w-3xl">
-              Частые вопросы
+              {lang === 'ru' ? 'Частые вопросы' : 'Common questions'}
             </h2>
           </div>
         </Reveal>
