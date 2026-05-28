@@ -55,15 +55,13 @@ export function Hero() {
 
   return (
     <section ref={ref} id="top" className="relative pt-32 md:pt-44 pb-20 md:pb-28 overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.06 }}>
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <filter id="grain">
-            <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-            <feColorMatrix type="saturate" values="0" />
-          </filter>
-          <rect width="100%" height="100%" filter="url(#grain)" />
-        </svg>
-      </div>
+      <div className="absolute inset-0 pointer-events-none" style={{
+        opacity: 0.06,
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23noise)'/%3E%3C/svg%3E")`,
+        backgroundRepeat: 'repeat',
+        backgroundSize: '256px 256px',
+        willChange: 'auto',
+      }} />
       <div className="container-pp">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

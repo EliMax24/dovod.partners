@@ -84,7 +84,7 @@ export function EthicsPage() {
 
 function EthicsRu() {
   return (
-    <Layout titleRu="Кодекс деловой этики" titleEn="Code of Ethics" date="Вступил в силу 9 апреля 2025 г.">
+    <Layout titleRu="Кодекс деловой этики" titleEn="Code of Ethics" date="Вступил в силу 9 апреля 2026 г.">
       <div className="py-8 border-b border-line-strong">
         <p className="text-ink/80 leading-relaxed">
           Это не формальный документ ради галочки. Здесь описано то, как мы на самом деле работаем
@@ -154,7 +154,7 @@ function EthicsRu() {
 
 function EthicsEn() {
   return (
-    <Layout titleRu="Кодекс деловой этики" titleEn="Code of Ethics" date="In force from 9 April 2025">
+    <Layout titleRu="Кодекс деловой этики" titleEn="Code of Ethics" date="In force from 9 April 2026">
       <div className="py-8 border-b border-line-strong">
         <p className="text-ink/80 leading-relaxed">
           This is not a box-ticking document. It describes how we actually work — and what you

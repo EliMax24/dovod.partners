@@ -84,7 +84,7 @@ export function ConfidentialityPage() {
 
 function ConfidentialityRu() {
   return (
-    <PolicyLayout titleRu="Политика конфиденциальности" titleEn="Privacy Policy" date="Редакция от 27 мая 2025 г.">
+    <PolicyLayout titleRu="Политика конфиденциальности" titleEn="Privacy Policy" date="Редакция от 27 мая 2026 г.">
       <div className="py-8 border-b border-line-strong">
         <p className="text-ink/80 leading-relaxed">
           Даже там, где формальных обязательств нет, мы придерживаемся высоких стандартов
@@ -166,7 +166,7 @@ function ConfidentialityRu() {
 
 function ConfidentialityEn() {
   return (
-    <PolicyLayout titleRu="Политика конфиденциальности" titleEn="Privacy Policy" date="Last updated: 27 May 2025">
+    <PolicyLayout titleRu="Политика конфиденциальности" titleEn="Privacy Policy" date="Last updated: 27 May 2026">
       <div className="py-8 border-b border-line-strong">
         <p className="text-ink/80 leading-relaxed">
           Even where no formal obligations apply, we maintain high standards in how we handle data.
@@ -253,7 +253,7 @@ export function TermsPage() {
 
 function TermsRu() {
   return (
-    <PolicyLayout titleRu="Пользовательское соглашение" titleEn="Terms of Use" date="Редакция от 27 мая 2025 г.">
+    <PolicyLayout titleRu="Пользовательское соглашение" titleEn="Terms of Use" date="Редакция от 27 мая 2026 г.">
       <Block question="Что это за документ?" answer="Базовые условия использования сайта dovod.partners. Ничего неожиданного — просто фиксируем очевидное." />
       <Block question="Сайт — это консультация?" answer="Нет. Тексты на сайте носят информационный характер и не являются юридической консультацией. Правовые отношения возникают только после подписания отдельного соглашения об оказании услуг." />
       <Block question="Можно ли использовать материалы сайта?" answer="Тексты, логотип и дизайн принадлежат DOVOD Partners. Если хотите что-то процитировать или использовать — напишите нам, обычно мы не против при указании источника." />
@@ -266,7 +266,7 @@ function TermsRu() {
 
 function TermsEn() {
   return (
-    <PolicyLayout titleRu="Пользовательское соглашение" titleEn="Terms of Use" date="Last updated: 27 May 2025">
+    <PolicyLayout titleRu="Пользовательское соглашение" titleEn="Terms of Use" date="Last updated: 27 May 2026">
       <Block question="What is this document?" answer="The basic terms for using dovod.partners. Nothing unexpected — just setting out the obvious." />
       <Block question="Is the site a legal consultation?" answer="No. The content on this site is informational only and does not constitute legal advice. A legal relationship arises only upon execution of a separate engagement agreement." />
       <Block question="Can I use materials from the site?" answer="Texts, logo and design belong to DOVOD Partners. If you wish to quote or use something — write to us; we are generally fine with it when the source is credited." />
