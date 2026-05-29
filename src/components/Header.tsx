@@ -27,10 +27,10 @@ export function Header() {
     >
       <div className="container-pp flex items-center justify-between h-16 md:h-20">
         <a href="#top">
-          <Logo width={180} />
+          <Logo width={180} className="w-[130px] md:w-[180px]" />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden xl:flex items-center gap-8">
           {nav.map((item) => (
             <a
               key={item.href}
@@ -42,7 +42,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden xl:flex items-center gap-4">
           <LangToggle lang={lang} toggle={toggle} />
           <a
             href="#contacts"
@@ -52,7 +52,7 @@ export function Header() {
           </a>
         </div>
 
-        <div className="lg:hidden flex items-center gap-3">
+        <div className="xl:hidden flex items-center gap-3">
           <LangToggle lang={lang} toggle={toggle} />
           <button
             className="p-2 -mr-2"
@@ -65,7 +65,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t border-line bg-paper">
+        <div className="xl:hidden border-t border-line bg-paper">
           <div className="container-pp py-6 flex flex-col gap-4">
             {nav.map((item) => (
               <a
