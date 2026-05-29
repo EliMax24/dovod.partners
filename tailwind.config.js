@@ -27,7 +27,7 @@ export default {
         container: "1440px",
       },
       fontSize: {
-        'display-xl': ['clamp(3rem, 7vw, 6rem)', { lineHeight: '1.02', letterSpacing: '-0.03em' }],
+        'display-xl': ['clamp(2.25rem, 7vw, 6rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
         'display-lg': ['clamp(2.5rem, 5vw, 4.5rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
         'display-md': ['clamp(2rem, 4vw, 3.25rem)', { lineHeight: '1.08', letterSpacing: '-0.02em' }],
         'stat': ['clamp(4rem, 10vw, 9rem)', { lineHeight: '1', letterSpacing: '-0.04em' }],
